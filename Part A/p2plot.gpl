@@ -1,0 +1,74 @@
+set datafile separator ','
+set term pdf
+set output 'Batch_1.pdf'
+set title "Batch:1"
+set grid
+set ylabel "Fault Coverage %" 
+set xlabel 'Applied Test Vector Batch'
+
+set style line 10 lw 2 lc "black" # style for A (0) (solid black)
+set style line 11 lw 2 lc "red" # style for B (1) (solid red)
+set style line 12 lt "dashed" lw 2 lc "red" # style for C (2) (dashed red)
+set style line 13 lw 2 lc "blue" # style for D (3) (solid blue)
+set style line 14 lt "dashed" lw 2 lc "blue" # style for E (4) (dashed blue)
+plot 'f_cvg_c432_b1.csv' using 1:2 title 'A' with lines ls 10, '' using 1:3 title 'B' with lines ls 11, '' using 1:4 title 'C' with lines ls 12, '' using 1:5 title 'D' with lines ls 13, '' using 1:6 title 'E' with lines ls 14
+
+set datafile separator ','
+set term pdf
+set output 'Batch_2.pdf'
+set title "Batch:2"
+set grid
+set ylabel "Fault Coverage %" 
+set xlabel 'Applied Test Vector Batch'
+
+set style line 10 lw 2 lc "black" # style for A (0) (solid black)
+set style line 11 lw 2 lc "red" # style for B (1) (solid red)
+set style line 12 lt "dashed" lw 2 lc "red" # style for C (2) (dashed red)
+set style line 13 lw 2 lc "blue" # style for D (3) (solid blue)
+set style line 14 lt "dashed" lw 2 lc "blue" # style for E (4) (dashed blue)
+plot 'f_cvg_c432_b2.csv' using 1:2 title 'A' with lines ls 10, '' using 1:3 title 'B' with lines ls 11, '' using 1:4 title 'C' with lines ls 12, '' using 1:5 title 'D' with lines ls 13, '' using 1:6 title 'E' with lines ls 14
+
+set datafile separator ','
+set term pdf
+set output 'Batch_4.pdf'
+set title "Batch:4"
+set grid
+set ylabel "Fault Coverage %" 
+set xlabel 'Applied Test Vector Batch'
+
+set style line 10 lw 2 lc "black" # style for A (0) (solid black)
+set style line 11 lw 2 lc "red" # style for B (1) (solid red)
+set style line 12 lt "dashed" lw 2 lc "red" # style for C (2) (dashed red)
+set style line 13 lw 2 lc "blue" # style for D (3) (solid blue)
+set style line 14 lt "dashed" lw 2 lc "blue" # style for E (4) (dashed blue)
+plot 'f_cvg_c432_b4.csv' using 1:2 title 'A' with lines ls 10, '' using 1:3 title 'B' with lines ls 11, '' using 1:4 title 'C' with lines ls 12, '' using 1:5 title 'D' with lines ls 13, '' using 1:6 title 'E' with lines ls 14
+
+set datafile separator ','
+set term pdf
+set output 'Batch_8.pdf'
+set title "Batch:8"
+set grid
+set ylabel "Fault Coverage %" 
+set xlabel 'Applied Test Vector Batch'
+
+set style line 10 lw 2 lc "black" # style for A (0) (solid black)
+set style line 11 lw 2 lc "red" # style for B (1) (solid red)
+set style line 12 lt "dashed" lw 2 lc "red" # style for C (2) (dashed red)
+set style line 13 lw 2 lc "blue" # style for D (3) (solid blue)
+set style line 14 lt "dashed" lw 2 lc "blue" # style for E (4) (dashed blue)
+plot 'f_cvg_c432_b8.csv' using 1:2 title 'A' with lines ls 10, '' using 1:3 title 'B' with lines ls 11, '' using 1:4 title 'C' with lines ls 12, '' using 1:5 title 'D' with lines ls 13, '' using 1:6 title 'E' with lines ls 14
+
+set datafile separator ','
+set term pdf
+set output 'Batch_10.pdf'
+set title "Batch:10"
+set grid
+set ylabel "Fault Coverage %" 
+set xlabel 'Applied Test Vector Batch'
+
+set style line 10 lw 2 lc "black" # style for A (0) (solid black)
+set style line 11 lw 2 lc "red" # style for B (1) (solid red)
+set style line 12 lt "dashed" lw 2 lc "red" # style for C (2) (dashed red)
+set style line 13 lw 2 lc "blue" # style for D (3) (solid blue)
+set style line 14 lt "dashed" lw 2 lc "blue" # style for E (4) (dashed blue)
+plot 'f_cvg_c432_b10.csv' using 1:2 title 'A' with lines ls 10, '' using 1:3 title 'B' with lines ls 11, '' using 1:4 title 'C' with lines ls 12, '' using 1:5 title 'D' with lines ls 13, '' using 1:6 title 'E' with lines ls 14
