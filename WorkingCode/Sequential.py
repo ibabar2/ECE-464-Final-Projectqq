@@ -256,7 +256,7 @@ def NetReader(netName):
 
         # add the gate output wire to the circuit dictionary with the dest as the i
         if (logic == "DFF"):
-            circuit[gateOut] = [logic, terms, True, '0']
+            circuit[gateOut] = [logic, terms, True, 'U']
             flipflopDict[gateOut] = terms
         else:
             circuit[gateOut] = [logic, terms, False, 'U']
@@ -476,6 +476,54 @@ def FaultReader(line):
         line.append(flag)
         fault = line
     return fault
+def DFF_SIM_FUNC(FaultToBeTested, circuit, response_tv, newCircuit, output, n):
+    det_f1 = []
+    det_wireOuts = []
+    Stuck_At_ = ""
+    k = 0
+
+    while k < n:
+        circuit = inputRead(circuit, response_tv)
+        if circuit == -1:
+            print("Invalid Input")
+            circuit = newCircuit
+            print("NEXT....\n")
+            return [det_f1, det_wireOuts]
+
+        elif circuit == -2:
+            print("Invalid Input")
+            circuit = newCircuit
+            print("NEXT....\n")
+            return [det_f1, det_wireOuts]
+
+        circuit = Fault_Input(circuit, FaultToBeTested)
+        circuit = good_sim(circuit, k + 1)
+        print("Cycle # " + str(k + 1) + "\n" " Result:" + "\n")
+        print(circuit)
+        print(
+
+            "_________________________________________________________________________________ ")
+
+
+        for keeys, vals in flipflopDict.items():
+            circuit[keeys][3] = circuit[vals[0]][3]
+
+        for y in circuit["OUTPUTS"][1]:
+            if not circuit[y][2]:
+                Stuck_At_ = "ERROR\"" + y + "\""
+                break
+            Stuck_At_ = str(circuit[y][3]) + Stuck_At_
+        reset_mode(circuit)  # Time to Reset Circuit here
+        k += 1
+
+    print(("\nTEST VECTOR = " + response_tv + " -> " + str(Stuck_At_) + "--------------- (FAULTY CIRCUIT)\n"))
+    if output != Stuck_At_:
+        det_f1.append(FaultToBeTested)
+        det_wireOuts.append(Stuck_At_)
+    reset_mode(circuit)
+    return [det_f1, det_wireOuts]
+
+
 def good_sim(circuit, n):
     queue = list(circuit["GATES"][1])
     i = 1
@@ -703,6 +751,24 @@ def main():
     print(" Faulty Circuit Simulation")
 
     print()
+
+    D_Faults = DFF_SIM_FUNC(Response_Fault, circuit, response_tv, newCircuit, output, cycles)
+
+    print(("\nTEST VECTOR = " + response_tv + " -> " + str(output) + "--------------- (GOOD CIRCUIT)\n"))
+
+
+    print("_______________________________________________")
+    print(" ALL CALCULATIONS ARE DONE")
+    if not D_Faults[0]:
+        print("___________________________________________")
+        print("The Fault was undetectable.")
+    else:
+        print("___________________________________________")
+        print("The Fault was Detected.\n")
+        print(D_Faults[0][0] + ":  " + response_tv + " -> " + D_Faults[1][0] + "\n")
+        for i in range(0, len(output), 1):
+            if output[i] != D_Faults[1][0][i]:
+                print("Detected AT Cycle #" + str(i + 1))
 
 
 if __name__ == "__main__":
