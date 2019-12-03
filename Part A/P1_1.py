@@ -182,12 +182,12 @@ def LSFR(inp):
     inp2 = ['0', '0', '0', '0', '0', '0', '0', '0']
 
     inp2[0] = inp[7]
-    inp2[1] = inp[0]
-    inp2[2] = int(inp[1]) ^ int(inp[len(inp)-1])
+    inp2[1] = int(inp[0]) ^ int(inp[len(inp)-1])
+    inp2[2] = inp[1]
     inp2[3] = int(inp[2]) ^ int(inp[len(inp)-1])
-    inp2[4] = int(inp[3]) ^ int(inp[len(inp)-1])
-    inp2[5] = int(inp[4]) ^ int(inp[len(inp)-1]) #added taps at 5 and 6 as well for checking
-    inp2[6] = int(inp[5]) ^ int(inp[len(inp)-1])
+    inp2[4] = inp[3]
+    inp2[5] = int(inp[4]) ^ int(inp[len(inp)-1])
+    inp2[6] = inp[5]
     inp2[7] = inp[6]
 
     inp2 = list(reversed(inp2))
